@@ -1,0 +1,80 @@
+/* 通用布局样式 */
+.hj-flex{
+	/* #ifndef APP-NVUE */
+	display: flex;
+	/* #endif */
+	flex-direction: row;
+	align-items: center;
+}
+.hj-flex-col {
+	/* #ifndef APP-NVUE */
+	display: flex;
+	/* #endif */
+	flex-direction: column;
+}
+.hj-row-between {
+	justify-content: space-between;
+}
+.hj-row-around {
+	justify-content: space-around;
+}
+.hj-row-center{
+	justify-content: center;
+}
+.hj-row-right{
+	justify-content: flex-end;
+}
+.hj-row-left{
+	justify-content: flex-start;
+}
+.hj-col-bottom {
+	align-items: flex-end;
+}
+// 定义flex等分
+@for $i from 0 through 12 {
+	.hj-flex-#{$i} {
+		flex: $i;
+	}
+}
+.hj-col-top {
+	align-items: flex-start;
+}
+.hj-text-left{
+	width: 100%;
+	text-align: left;
+}
+// 定义字体(rpx)单位，大于或等于80的都为rpx单位字体
+@for $i from 20 through 80 {
+	.u-font-#{$i} {
+		font-size: $i + rpx;
+	}
+}
+// 定义内外边距，历遍1-100 缩写
+@for $i from 0 through 100 {
+	// 只要双数和能被5除尽的数
+	@if $i % 2 == 0 or $i % 5 == 0 {
+		// 得出：hj-m-30
+		.hj-m-#{$i} {
+			margin: $i + rpx!important;
+		}
+		
+		// 得出：hj-p-30
+		.hj-p-#{$i} {
+			padding: $i + rpx!important;
+		}
+		
+		@each $short, $long in l left, t top, r right, b bottom {
+			// 缩写版，结果如： hj-m-l-30
+			// 定义外边距
+			.hj-m-#{$short}-#{$i} {
+				margin-#{$long}: $i + rpx!important;
+			}
+			
+			// 定义内边距
+			.hj-p-#{$short}-#{$i} {
+				padding-#{$long}: $i + rpx!important;
+			}
+			
+		}
+	}
+}
