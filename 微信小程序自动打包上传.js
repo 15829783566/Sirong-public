@@ -5,7 +5,7 @@
 const ci = require('miniprogram-ci');
 (async () => {
     const project = new ci.Project({
-        appid: 'wx2924301877de8d6d',
+        appid: 'wx292************8d6d',
         type: 'miniProgram',
         projectPath: './dist/build/mp-weixin',
         privateKeyPath: './private-v22.key',
